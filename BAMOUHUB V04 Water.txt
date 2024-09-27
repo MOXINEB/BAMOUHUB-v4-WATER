@@ -1,0 +1,735 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/Xtincq/BamouHub/refs/heads/main/BamouHub'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Bamou Hub",
+   LoadingTitle = "Dinosaur Simulator",
+   LoadingSubtitle = "by AstraXNebby",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Modes Bussy"
+   },
+  
+})
+local Tab = Window:CreateTab("Main")
+local Button = Tab:CreateButton({
+   Name = "Anti AFK",
+   Callback = function()
+       local player = game.Players.LocalPlayer
+       local userInputService = game:GetService("UserInputService")
+       local virtualUser = game:GetService("VirtualUser")
+
+       local function leftClick()
+           virtualUser:ClickButton1(Vector3.new(0, 0, 0))
+       end
+
+       local function antiAFK()
+           while true do
+               leftClick()
+               wait(10)
+           end
+       end
+
+       antiAFK()
+   end,
+})
+
+
+
+local Button = Tab:CreateButton({
+   Name = "Anti Ban",
+   Callback = function()
+   local Players = game:GetService("Players")
+
+local moderators = {
+    [63300487] = "Chicken",
+    [105626586] = "SirBlameson",
+    [55328654] = "Hurricane",
+    [23952793] = "Serverz2",
+    [109217153] = "fearfant",
+    [69154091] = "Nicoletta",
+    [24836348] = "Guestdere",
+    [66088649] = "Resinaia",
+    [123306417] = "Cap",
+    [88919952] = "Beefman",
+    [6001454372] = "Drummination",
+    [1812361368] = "Exosys",
+    [2636154512] = "goxxity1",
+    [249030041] = "Doomyte",
+    [76926614] = "TheSleepySauk",
+    [6766555] = "Hicknick2",
+    [433002751] = "Xotile",
+    [101355387] = "Ally",
+    [337758247] = "als",
+    [794021829] = "Zombieboy",
+    [156496901] = "Muffin",
+    [9741973] = "kekw",
+    [443834511] = "Mexicanfirechicekn",
+    [103002267] = "Silverplight",
+    [69453307] = "m3rkus",
+    [39940547] = "Seb",
+    [122921794] = "rbot",
+    [120874438] = "Jairen",
+    [72351678] = "A1bino",
+    [117546168] = "TrashieBro",
+    [61052512] = "JaxonBirb",
+    [1726576544] = "S_viq3r",
+    [43755062] = "trex4500",
+    [566686862] = "PrdJor",
+    [456000232] = "RedHotFiree",
+    [58312946] = "SudoMesh",
+    [529245243] = "Toddynhu28",
+    [67344357] = "Kaptain_Krocy",
+    [1002276274] = "frijolesytortila",
+    [128272570] = "Senior_Puertasaurus",
+    [128354394] = "Deoluxis",
+    [83259917] = "Hunterrio_n",
+    [302566312] = "Type_Five",
+    [1370961177] = "Goji_195421",
+    [117213744] = "BelIasaurus",
+    [157230126] = "catonthewalls",
+    [69239108] = "MacRenee",
+    [108423844] = "SleepyNorsil",
+    [115985149] = "wiz_wong",
+    [113655887] = "Vampirfinch",
+    [145421040] = "Deosuran",
+    [39523020] = "koekjeszijnlekker"
+}
+
+local function checkForModerators()
+    for _, player in ipairs(Players:GetPlayers()) do
+        local username = moderators[player.UserId]
+        if username then
+            Players.LocalPlayer:Kick("Ugly Nigger Joined: " .. username)
+        end
+    end
+end
+
+while true do
+    wait(0.1)
+    checkForModerators()
+end
+   end,
+})
+
+local Section = Tab:CreateSection("Auto Farm")
+
+-- Override the print and warn functions to silence them within this scope
+local originalPrint = print
+local originalWarn = warn
+
+local function silentPrint(...) end  -- Empty function to silence print
+local function silentWarn(...) end   -- Empty function to silence warnings
+
+local isRunning = false  -- Track whether the toggle is enabled or not
+local Toggle = Tab:CreateToggle({
+    Name = "DNA Farm",
+    CurrentValue = false,
+    Flag = "Toggle1",  -- A flag is the identifier for the configuration file
+    Callback = function(Value)
+        isRunning = Value  -- Update the running state based on the toggle value
+
+        if isRunning then
+            -- Silence print and warn
+            print = function() end
+            warn = function() end
+
+            -- Function to trim and normalize region names by removing spaces
+            local function normalizeRegionName(name)
+                return name:gsub("%s+", "")  -- Remove spaces
+            end
+            
+            -- Other logic goes here...
+
+        else
+            -- Code to handle when DNA Farm is stopped
+        end
+    end
+})
+
+            -- Step 1: Lower the water level continuously to prevent drowning
+local waterLevel = workspace.ServerValues:FindFirstChild("WaterLevel")
+
+spawn(function()
+    while isRunning do  -- Only run if the toggle is ON
+        waterLevel.Value = 1
+        wait(3)  -- Wait for 5 seconds
+    end
+end)
+
+            -- Step 2: Modify the sizes of the regions
+            local replicatedStorage = game:GetService("ReplicatedStorage")
+
+            local regions = {
+                Jungle = {
+                    replicatedStorage.Regions.Jungle:GetChildren()[2],
+                    replicatedStorage.Regions.Jungle.Region,
+                },
+                Peak = {
+                    replicatedStorage.Regions.Peak.Region,
+                },
+                ShroomForest = {
+                    replicatedStorage.Regions["Shroom Forest"]:GetChildren()[2],
+                    replicatedStorage.Regions["Shroom Forest"].Region,
+                },
+                Redwoods = {
+                    replicatedStorage.Regions.Redwoods:GetChildren()[3],
+                    replicatedStorage.Regions.Redwoods.Region,
+                    replicatedStorage.Regions.Redwoods:GetChildren()[2],
+                },
+                Inlet = {
+                    replicatedStorage.Regions.Inlet:GetChildren()[5],
+                    replicatedStorage.Regions.Inlet.Region,
+                    replicatedStorage.Regions.Inlet:GetChildren()[3],
+                    replicatedStorage.Regions.Inlet:GetChildren()[2],
+                    replicatedStorage.Regions.Inlet:GetChildren()[4],
+                },
+                Desert = {
+                    replicatedStorage.Regions.Desert:GetChildren()[3],
+                    replicatedStorage.Regions.Desert.Region,
+                    replicatedStorage.Regions.Desert:GetChildren()[2],
+                },
+                UndergroundOcean = {
+                    replicatedStorage.Regions["Underground Ocean"]:GetChildren()[6],
+                    replicatedStorage.Regions["Underground Ocean"].Region,
+                    replicatedStorage.Regions["Underground Ocean"]:GetChildren()[3],
+                    replicatedStorage.Regions["Underground Ocean"]:GetChildren()[2],
+                    replicatedStorage.Regions["Underground Ocean"]:GetChildren()[4],
+                    replicatedStorage.Regions["Underground Ocean"]:GetChildren()[5],
+                },
+                Tundra = {
+                    replicatedStorage.Regions.Tundra.Region,
+                    replicatedStorage.Regions.Tundra:GetChildren()[2],
+                }
+            }
+
+            -- Loop through each region and modify the Y value of their Size properties
+            for regionName, objects in pairs(regions) do
+                for _, obj in pairs(objects) do
+                    if obj:IsA("BasePart") then
+                        local currentSize = obj.Size
+                        -- Example modification of size, customize as needed
+                        if regionName == "UndergroundOcean" then
+                            obj.Size = Vector3.new(currentSize.X, 600, currentSize.Z)
+                        else
+                            obj.Size = Vector3.new(currentSize.X, 9000, currentSize.Z)
+                        end
+                    end
+                end
+            end
+
+            -- Step 3: Ensure platforms are created at corresponding positions
+            local platformPositions = {
+                Tundra = Vector3.new(-3566.77, -244.43, -1190.92),
+                Jungle = Vector3.new(-3916.33, -244.43, -1141.48),
+                Redwoods = Vector3.new(-4187.29, -243.87, -1516.67),
+                UndergroundOcean = Vector3.new(-4261.61, -243.87, -1646.56),
+                Peak = Vector3.new(-3669.92, -461.07, -2184.59),
+                Desert = Vector3.new(-4536.81, -221.81, -2483.47),
+                ShroomForest = Vector3.new(-3234.29, -157.88, -2800.59),
+                Inlet = Vector3.new(-4362.28, -495.64, -1747.64)
+            }
+
+            -- Step 4: Function to create a platform if it doesn't exist yet
+            local function createPlatformIfNeeded(position)
+                local platformName = "RegionPlatform_" .. tostring(position) -- Give each platform a unique name
+                local existingPlatform = workspace:FindFirstChild(platformName)
+
+                if not existingPlatform then
+                    local platform = Instance.new("Part")
+                    platform.Name = platformName
+                    platform.Size = Vector3.new(100, 1, 100)  -- Size of the platform
+                    platform.Position = position
+                    platform.Anchored = true
+                    platform.BrickColor = BrickColor.new("Royal purple")
+                    platform.Parent = workspace
+                end
+            end
+
+            -- Step 5: Function to fly the local player to the platform and stop just above it
+            local function flyToPlatform(targetPosition)
+                local player = game.Players.LocalPlayer
+                local character = player.Character or player.CharacterAdded:Wait()
+                local humanoidRootPart = character:WaitForChild("HumanoidRootPart")  -- Assume dino or player has this root part
+
+                local flightSpeed = 200
+                local stopMargin = 0.1 -- Precision margin to stop exactly on the platform
+                local fly = true
+                local abovePlatformHeight = 5 -- Stop slightly above the platform to avoid falling
+
+                -- Enable noclip (so the dino can fly through objects if necessary)
+                local function setNoclip(enabled)
+                    for _, part in pairs(character:GetDescendants()) do
+                        if part:IsA("BasePart") then
+                            part.CanCollide = not enabled
+                        end
+                    end
+                end
+
+                -- Keep noclip enabled during flight
+                setNoclip(true)
+
+                -- Fly to the target position
+                local connection
+                connection = game:GetService("RunService").Stepped:Connect(function(_, deltaTime)
+                    if fly and isRunning then  -- Check if flying should continue
+                        local currentPos = humanoidRootPart.Position
+                        -- Adjust target fly position: Y = platform Y + abovePlatformHeight
+                        local targetFlyPosition = Vector3.new(targetPosition.X, targetPosition.Y + abovePlatformHeight, targetPosition.Z)
+
+                        -- Calculate direction and movement towards target
+                        local direction = (targetFlyPosition - currentPos).unit
+                        local moveDistance = direction * flightSpeed * deltaTime
+
+                        -- Measure distance to the target
+                        local distanceToTarget = (targetFlyPosition - currentPos).magnitude
+
+                        -- Stop at the target when within precision margin
+                        if distanceToTarget <= stopMargin then
+                            humanoidRootPart.CFrame = CFrame.new(targetFlyPosition)
+                            fly = false  -- Stop flying at the target
+                            setNoclip(false)  -- Disable noclip
+
+                            -- Lock the position by anchoring
+                            humanoidRootPart.Anchored = true
+
+                            -- Disconnect the flight logic after reaching the platform
+                            connection:Disconnect()
+                        else
+                            -- Continue flying towards the target
+                            humanoidRootPart.CFrame = humanoidRootPart.CFrame + moveDistance
+                        end
+                    elseif not isRunning then
+                        connection:Disconnect()  -- Stop flying when toggle is turned off
+                    end
+                end)
+            end
+
+            -- Step 6: Continuously check for changes in the region bonus
+local Toggle = Tab:CreateToggle({
+    Name = "DNA Farm",
+    CurrentValue = false,
+    Flag = "Toggle1",  -- A flag is the identifier for the configuration file
+    Callback = function(Value)
+        isRunning = Value  -- Update the running state based on the toggle value
+
+        if isRunning then
+            -- Silence print and warn
+            print = function() end
+            warn = function() end
+
+            -- Function to trim and normalize region names by removing spaces
+            local function normalizeRegionName(name)
+                return name:gsub("%s+", "")  -- Remove spaces
+            end
+
+            spawn(function()
+                while isRunning do  -- Only run if the toggle is ON
+                    local success, errorMsg = pcall(function()
+                        local rawRegionBonus = game:GetService("Workspace").ServerValues.ServerBonus.CurrentRegionBonus.Value
+                        local currentRegionBonus = normalizeRegionName(rawRegionBonus)  -- Normalize the region name
+
+                        -- Check if there is a platform position corresponding to the normalized region bonus
+                        local targetPosition = platformPositions[currentRegionBonus]
+
+                        if targetPosition then
+                            -- Ensure the platform exists before flying to it
+                            createPlatformIfNeeded(targetPosition)
+                            -- Fly the player to the corresponding platform
+                            flyToPlatform(targetPosition)
+                        end
+                    end)
+
+                    if not success then
+                        warn("Error occurred in the platform script: " .. errorMsg)
+                    end
+
+                    -- Adjust wait for lag safety
+                    task.wait(1)  -- Check for updates every second (task.wait is better than wait)
+                end
+            end)
+        else
+            -- Restore the original print and warn functions when toggle is off
+            print = originalPrint
+            warn = originalWarn
+        end
+    end
+})
+
+
+local Section = Tab:CreateSection("Skin Changer: Orni, Troodon, Stegoceras ")
+
+local Button = Tab:CreateButton({
+   Name = "Skin Changer Thingy",
+   Callback = function()
+   -- Script 1: Assigning Megavores and Terrors to Menu 3
+
+-- Define the skins for Menu 3 (positions 2 to 12)
+local menu3Skins = {
+    "Galactic Terror",                -- 1
+    "Pitch Black Terror",             -- 2
+    "Apex Hothead Megavore",          -- 3
+    "Deep Sea Megavore",              -- 4
+    "Solar Bringer Megavore",         -- 5
+    "Star Destroyer Megavore",        -- 6
+    "Hothead Megavore",               -- 7
+    "Diamond Megavore",               -- 8
+    "Rainbow Megavore",               -- 9
+    "Glass Megavore",                 -- 10
+    "Rainbow Albino Terror",          -- 11
+    "Glass Albino Terror"             -- 12
+}
+
+-- Access ReplicatedStorage
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Function to assign skins to a given DinosaurMenuList index
+local function assignSkins(menuIndex, skins)
+    local dinosaurMenuList = replicatedStorage.Database.DinosaurMenuList[menuIndex].Skins
+    local skinSlots = dinosaurMenuList:GetChildren()
+
+    -- Start assigning the skins from the second slot onward
+    for i = 1, #skins do
+        local skinSlot = skinSlots[i + 1] -- +1 because skinSlots[1] is likely reserved
+        if skinSlot then
+            skinSlot.Value = skins[i]
+        else
+            warn("No skin slot found for index " .. tostring(i))
+        end
+    end
+end
+
+-- Execute the skin assignment for Menu 3
+assignSkins(3, menu3Skins)
+wait(3) -- Wait for 3 seconds
+
+-- Script 2: Assigning Avinychus and Albino Skins to Menu 15
+
+-- Define the skins for Menu 15 (positions 2 to 9)
+local menu15Skins = {
+    "Firebird",                       -- 1
+    "Ripper Avinychus",              -- 2
+    "Luminescent Avinychus",         -- 3
+    "Pitch Luminescent Avinychus",   -- 4
+    "Scythe Slasher Avinychus",      -- 5
+    "Zomvinychus",                   -- 6
+    "Diamond Albino Terror"           -- 7
+    -- Removed Rainbow Albino and Glass Albino for balance
+}
+
+-- Access ReplicatedStorage
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Function to assign skins to a given DinosaurMenuList index
+local function assignSkins(menuIndex, skins)
+    local dinosaurMenuList = replicatedStorage.Database.DinosaurMenuList[menuIndex].Skins
+    local skinSlots = dinosaurMenuList:GetChildren()
+
+    -- Start assigning the skins from the second slot onward
+    for i = 1, #skins do
+        local skinSlot = skinSlots[i + 1]
+        if skinSlot then
+            skinSlot.Value = skins[i]
+        else
+            warn("No skin slot found for index " .. tostring(i))
+        end
+    end
+end
+
+-- Execute the skin assignment for Menu 15
+assignSkins(15, menu15Skins)
+wait(3) -- Wait for 3 seconds
+
+-- Script 3: Assigning Remaining Skins to Menu 11
+
+-- Define the remaining skins for Menu 11 (positions 2 to 12)
+local menu11Skins = {
+    "Caveman 2",                     -- 1
+    "Thor",                          -- 2
+    "Zeus",                          -- 3
+    "Caveman Grug",                  -- 4
+    "Barinatherium",                 -- 5
+    "Scylla",                        -- 6
+    "Glass Albino Terror",            -- 7
+    "Rainbow Albino Terror"           -- 8
+    -- You can add more skins here if needed to fill the slots
+}
+
+-- Access ReplicatedStorage
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Function to assign skins to a given DinosaurMenuList index
+local function assignSkins(menuIndex, skins)
+    local dinosaurMenuList = replicatedStorage.Database.DinosaurMenuList[menuIndex].Skins
+    local skinSlots = dinosaurMenuList:GetChildren()
+
+    -- Start assigning the skins from the second slot onward
+    for i = 1, #skins do
+        local skinSlot = skinSlots[i + 1]
+        if skinSlot then
+            skinSlot.Value = skins[i]
+        else
+            warn("No skin slot found for index " .. tostring(i))
+        end
+    end
+end
+
+-- Execute the skin assignment for Menu 11
+assignSkins(11, menu11Skins)
+wait(3) -- Wait for 3 seconds
+
+   end,
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local Tab = Window:CreateTab("Player") -- Title, Image
+
+local Section = Tab:CreateSection("Player Stats")
+
+local running = false  -- Initialize a variable to track if the loop is running
+local Toggle = Tab:CreateToggle({
+   Name = "Hunger",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+       running = Value  -- Set running to the state of the toggle (true when on, false when off)
+
+       if running then
+           -- Start the loop in a separate thread to keep the UI responsive
+           spawn(function()
+               while running do
+                   local treesFolder = workspace.GameMap.Trees
+                   local leafParts = {}  -- Table to hold all the leaf parts
+
+                   -- Gather all leaf parts
+                   for _, folder in pairs(treesFolder:GetChildren()) do
+                       if folder:IsA("Folder") then
+                           for _, tree in pairs(folder:GetChildren()) do
+                               if tree:IsA("Model") then
+                                   for _, child in pairs(tree:GetChildren()) do
+                                       if child:IsA("Part") and child.Name == "Leaf" then
+                                           table.insert(leafParts, child)  -- Add leaf part to the table
+                                       end
+                                   end
+                               end
+                           end
+                       end
+                   end
+
+                   -- Randomly select and eat one leaf part
+                   if #leafParts > 0 then
+                       local randomIndex = math.random(1, #leafParts)  -- Get a random index
+                       local chosenLeaf = leafParts[randomIndex]  -- Select the leaf part
+                       local args = {
+                           [1] = chosenLeaf,  -- The selected Leaf part
+                           [2] = 2  -- Example token
+                       }
+
+                       -- FireServer without triggering audit log entry (if possible)
+                       workspace.GameEvents.EatPlant:FireServer(unpack(args))
+
+                       -- You can remove the print statement to avoid logging
+                       -- print("Attempting to eat:", chosenLeaf:GetFullName())  -- Debug output
+                   end
+
+                   wait(1)  -- Add a delay between iterations (adjust as needed)
+
+                   -- Check if the toggle has been turned off
+                   if not running then
+                       break  -- Exit the loop if toggle is turned off
+                   end
+               end
+           end)
+       end
+   end,
+})
+
+
+local running = false  -- Variable to track if the loop is running
+
+local Toggle = Tab:CreateToggle({
+    Name = "Thirst",
+    CurrentValue = false,
+    Flag = "Toggle1",  -- Unique flag for this toggle
+    Callback = function(Value)
+        running = Value  -- Set 'running' to the state of the toggle (true when on, false when off)
+
+        -- If the toggle is turned on, start the loop
+        if running then
+            spawn(function()  -- Use a separate thread to avoid freezing the UI
+                local player = game.Players.LocalPlayer
+                local character = player.Character or player.CharacterAdded:Wait()
+
+                -- Locate the original water part
+                local waterPart = workspace:FindFirstChild("GameMap"):FindFirstChild("Water"):FindFirstChild("Water")
+
+                if waterPart and waterPart:IsA("Part") then
+                    -- Run the script in a loop
+                    while running do  -- Only run the loop if the toggle is ON
+                        -- Ensure the character exists in case of respawns
+                        character = player.Character or player.CharacterAdded:Wait()
+
+                        -- Set the position to teleport the water part below the player
+                        local newPosition = character.HumanoidRootPart.Position + Vector3.new(0, 3, 0)  -- 3 units above the player
+
+                        -- Teleport the original water part
+                        waterPart.Position = newPosition
+                        waterPart.Size = Vector3.new(1, 1, 1)  -- Set to 1x1x1
+                        waterPart.Transparency = 1  -- Set transparency to 100%
+                        waterPart.CanCollide = false  -- Disable collision if needed
+
+                        -- Fire the addThirst event using the water part's position
+                        local args = {
+                            waterPart,  -- Reference to the original water part
+                            waterPart.Position  -- Current position of the water part
+                        }
+
+                        workspace.GameEvents.addThirst:FireServer(unpack(args))
+
+                        -- Add a small delay to prevent overloading the game
+                        wait(1)
+
+                        -- Check if the toggle has been turned off
+                        if not running then
+                            break  -- Exit the loop if the toggle is turned off
+                        end
+                    end
+                else
+                    -- Handle the case where the original water part is not found
+                    warn("Water part not found in the game map.")
+                end
+            end)
+        end
+    end,
+})
+
+local Section = Tab:CreateSection("Movement")
+
+local Button = Tab:CreateButton({
+   Name = "Superspeed",
+   Callback = function()
+   local player = game.Players.LocalPlayer
+local userInput = game:GetService("UserInputService")
+local flying = false
+local flySpeed = 50
+
+local function toggleFly()
+    flying = not flying
+
+    local character = player.Character or player.CharacterAdded:Wait()
+    if not character.PrimaryPart then
+        character:WaitForChild("HumanoidRootPart")
+    end
+
+    while flying do
+        local direction = Vector3.new(0, 0, 0)
+        local cameraCF = workspace.CurrentCamera.CFrame
+
+        if userInput:IsKeyDown(Enum.KeyCode.W) then
+            direction = direction + cameraCF.LookVector
+        end
+        if userInput:IsKeyDown(Enum.KeyCode.S) then
+            direction = direction - cameraCF.LookVector
+        end
+        if userInput:IsKeyDown(Enum.KeyCode.A) then
+            direction = direction - cameraCF.RightVector
+        end
+        if userInput:IsKeyDown(Enum.KeyCode.D) then
+            direction = direction + cameraCF.RightVector
+        end
+        if userInput:IsKeyDown(Enum.KeyCode.Space) then
+            direction = direction + Vector3.new(0, 1, 0)
+        end
+        if userInput:IsKeyDown(Enum.KeyCode.LeftShift) then
+            direction = direction + Vector3.new(0, -1, 0)
+        end
+
+        -- Update character's position directly
+        character:SetPrimaryPartCFrame(character.PrimaryPart.CFrame + (direction.Unit * flySpeed * 0.1))
+        wait(0.03)
+    end
+end
+
+userInput.InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.F and not gameProcessed then
+        toggleFly()
+    end
+end)
+
+player.CharacterAdded:Connect(function(newCharacter)
+    -- Reinitialize if character changes
+    character = newCharacter
+end)
+   end,
+})
+
+
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer -- Get the local player
+local MemoryCard = localPlayer.MemoryCard
+local DinosaurData = MemoryCard.DinosaurData
+
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer -- Get the local player
+local MemoryCard = localPlayer.MemoryCard
+local DinosaurData = MemoryCard.DinosaurData
+
+-- List of land dinosaur species
+local dinosaurList = {
+    "Avimimus", "Coelophysis", "Istiodactylus", "Arizonasaurus", "Balaur", "Guanlong", "Meganeura", 
+    "Stegoceras", "Thalassodromeus", "Troodon", "Yandusaurus", "Pteranodon", "Gojirasaurus", 
+    "Caveman 1", "Ornithomimus", "Achillobator", "Concavenator", "Dilophosaurus", "Kosmoceratops", 
+    "Majungasaurus", "Utahraptor", "Carnotaurus", "Gallimimus", "Gigatitan", "Pachycephalosaurus", 
+    "Albertosaurus", "Allosaurus", "Barinasuchus", "Ceratosaurus", "Gigantoraptor", "Irritator", 
+    "Maiasaura", "Murusraptor", "Plateosaurus", "Sauroniops", "Styracosaurus", "Yutyrannus", 
+    "Fasolasuchus", "Amargasaurus", "Megalania", "Aegisuchus", "Baryonyx", "Corythosaurus", 
+    "Edmontonia", "Ichthyovenator", "Kentrosaurus", "Mastodonsaurus", "Mayhem Wanderer", 
+    "Saurophaganax", "Shunosaurus", "Therizinosaurus", "Suchomimus", "Chimerarachne", 
+    "Maip Macrothorax", "Stegosaurus", "Tarbosaurus", "Quetzalcoatlus", "Machimosaurus", 
+    "Eotriceratops", "Torvosaurus", "Ankylosaurus", "Deinocheirus", "Giganotosaurus", 
+    "Iguanodon", "Mapusaurus", "Parasaurolophus", "Tyrannosaurus Rex", "Saltasaurus", 
+    "Saurolophus", "Triceratops", "Tyrannotitan", "Woolly Mammoth", "Hatzegopteryx", 
+    "Acrocanthosaurus", "Carcharodontosaurus", "Dacentrurus", "Spinosaurus", "Avinychus", 
+    "Camarasaurus", "Lusotitan", "Shantungosaurus", "Titanosaurus", "Alametus", "Apatosaurus", 
+    "Spinofaarus", "Fasolatherium", "Mayhem Excavator", "Mayhem Crawler", "Albino Terror", 
+    "Megavore", "Giraffatitan", "Futalognkosaurus", "Puertasaurus", "Sauroposeidon", 
+    "Barosaurus", "Mayhem Tripod", "Argentinosaurus"
+}
+
+local function removeDinosaur(dinoName)
+    if DinosaurData:FindFirstChild(dinoName) then
+        DinosaurData[dinoName]:Destroy()
+        print(dinoName .. " has been deleted.")
+    end
+end
+
+-- Function to loop through the list and remove any matching dinosaurs
+local function removeAllDinosaurs()
+    for _, dinoName in ipairs(dinosaurList) do
+        removeDinosaur(dinoName)
+    end
+end
+
+-- Remove all listed dinosaurs once initially
+removeAllDinosaurs()
+
+-- Set up a loop to continuously check for re-added dinosaurs and remove them again
+while true do
+    wait(5) -- Check every 5 seconds
+    removeAllDinosaurs() -- Remove dinosaurs in the list if they've been re-added
+end -- Properly close the while loop
